@@ -187,46 +187,15 @@ public class BinaryTree<T> {
 		printPostOrder(this.root);
 		System.out.println();
 	}
-	public void zad4(BinaryTreeNode<T> root) {
+	public void Ex4(BinaryTreeNode<T> root) {
+		//this is where i need to solve the problem
 		queue.add(root);
 
 		while (!queue.isEmpty()) {
-			BinaryTreeNode<T> value = queue.poll();
-			if (value.getLeftChild().isLeaf(value) && value.getRightChild().isLeaf(value)) {
-				System.out.println(value.getValue());
-			}
-			if (value.getLeftChild() != null ) {
-				queue.add(value.getLeftChild());		
-			}
-			if (value.getRightChild() != null) {
-				queue.add(value.getRightChild());
-			}
+			
 		}
 	}
-	public void kamzad4() {
+	public void toEx4() {
 		zad4(this.root);
-	}
-	public static void main(String[] args) {
-		// Create the binary tree from the sample.
-		BinaryTree<Integer> binaryTree1 =
-				new BinaryTree<Integer>(14,
-						new BinaryTree<Integer>(19,
-								new BinaryTree<Integer> (23),
-									new BinaryTree<Integer> (6,
-										new BinaryTree<Integer>(10),
-											new BinaryTree<Integer>(21))),
-												new BinaryTree<Integer>(15,
-														new BinaryTree<Integer>(3),
-															null));
-		BinaryTree<Integer> binaryTree = new BinaryTree<Integer>(1, new BinaryTree<Integer>(2, new BinaryTree<Integer>(4, new BinaryTree<Integer>(8), null), new BinaryTree<Integer>(5, new BinaryTree<Integer>(9), null)), new BinaryTree<Integer>(3, new BinaryTree<Integer>(6, new BinaryTree<Integer>(10), null), new BinaryTree<Integer>(7, new BinaryTree<Integer>(11), null)));
-		// Traverse and print the tree in pre-order manner.
-		binaryTree.traversePreOrder();
-		System.out.println("________________________________________");
-//		Traverse and print the tree in in-order manner.
-		binaryTree.traverseInOrder();
-		System.out.println("________________________________________");
-//		Traverse and print the tree in post-order manner.
-		binaryTree.traversePostOrder();
-		System.out.println("________________________________________");
 	}
 }
