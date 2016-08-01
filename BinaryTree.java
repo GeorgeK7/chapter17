@@ -187,12 +187,37 @@ public class BinaryTree<T> {
 		printPostOrder(this.root);
 		System.out.println();
 	}
-	public void Ex4(BinaryTreeNode<T> root) {
-		//this is where i need to solve the problem
-		queue.add(root);
+	public void PrintLevelSums() {
+		Queue<BinaryTreeNode<T>> currentLevelNodes = new LinkedList<BinaryTreeNode<T>>();
+		Queue<BinaryTreeNode<T>> nextLevelNodes = new LinkedList<BinaryTreeNode<T>>();
+		ArrayList<Integer> sums = new ArrayList<Integer>();
 
-		while (!queue.isEmpty()) {
-			
+		currentLevelNodes.add(this.root);
+		while (currentLevelNodes.size() > 0) {
+			int nextSum = 0;
+			while (currentLevelNodes.size() > 0) {
+				BinaryTreeNode currentNode = currentLevelNodes.poll();
+				nextSum += (Integer) currentNode.getValue();
+				if (currentNode.getLeftChild() != null) {
+					nextLevelNodes.add(currentNode.getLeftChild());
+				}
+				if (currentNode.getRightChild() != null) {
+					nextLevelNodes.add(currentNode.getRightChild());
+				}
+			}
+			sums.add(nextSum);
+			while (nextLevelNodes.size() > 0) {
+				BinaryTreeNode currentChild = nextLevelNodes.poll();
+				currentLevelNodes.add(currentChild);
+			}
+		}
+		PrintThem(sums);
+	}
+	public void PrintThem(ArrayList<Integer> sums) {
+		long sumCounter = 0;
+		for (int sum : sums) {
+			System.out.printf("\nLevel {%d} -> {%d}", sumCounter, sum);
+			sumCounter++;
 		}
 	}
 	public void toEx4() {
